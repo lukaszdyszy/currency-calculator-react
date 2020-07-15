@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+
+.currency{
+    padding: 7px;
+    select, input{
+        font-size: 1.1rem;
+        background-color: inherit;
+        color: inherit;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+        padding: 5px;
+        margin: 5px 0;
+        &:focus{
+            outline: none;
+        }
+        &:disabled{
+            border-bottom: none;
+        }
+    }
+    &:first-child{
+        padding-bottom: 20px;
+        input:focus{
+            box-shadow: inset 0px -7px 5px -5px rgba(0,0,0,0.75);
+        }
+    }
+    &:last-child{
+        padding-top: 20px;
+    }
+}
+
+.reverse{
+    display: flex;
+    justify-content: center;
+    img{
+        position: relative;
+        transform: rotate(90deg);
+        width: 64px;
+        height: 64px;
+    }
+}

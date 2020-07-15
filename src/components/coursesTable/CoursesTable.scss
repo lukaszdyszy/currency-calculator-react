@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+
+h2{
+    margin: 0;
+    padding: 35px 0 10px 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.focused{
+    height: 1px;
+    margin: 2px 0 0 0;
+    width: 70%;
+    background-color: gold;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    td, th{
+        padding: 5px;
+    }
+    th{
+        border-bottom: 3px solid $dark-border;
+    }
+    td{
+        font-size: 0.95rem;
+        // &:nth-child(2){
+        //     text-align: right;
+        // }
+    }
+    tr:nth-child(n+1):hover td .focused{
+        transform: scaleX(1);
+    }
+    tr:nth-child(odd){
+        background-color: $dark-third-background;
+    }
+}

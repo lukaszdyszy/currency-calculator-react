@@ -1,0 +1,79 @@
+@import '../../variables.scss';
+
+.navbar{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: $dark-background;
+    display: flex;
+    padding: 15px;
+    border-bottom: 2px solid black;
+}
+.left{
+    flex: 1;
+    display: flex;
+}
+.theme-select{
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 50%;
+    &:hover{
+        cursor: pointer;
+    }
+    &.active{
+        border-color: goldenrod;
+    }
+    &.dark{
+        background-color: $dark-background;
+    }
+    &.light{
+        background-color: $light-background;
+    }
+}
+.right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+// menu
+.fa-times{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.main-menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70vw;
+    height: 100vh;
+    z-index: 1001;
+    background-color: $dark-nav;
+    transform: translateX(100%);
+    transition: transform 0.75s;
+    &.shown{
+        transform: translateX(0);
+    }
+}
+ul.menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+    li{
+        line-height: 200%;
+        padding: 0 10px;
+        margin: 0;
+    }
+}

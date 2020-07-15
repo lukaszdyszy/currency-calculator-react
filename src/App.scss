@@ -1,0 +1,29 @@
+@import './variables.scss';
+
+.App{
+    min-height: 100vh;
+    &.theme-dark{
+        background-color: $dark-background;
+        color: $dark-font;
+        .secondary{
+            background-color: $dark-secondary-background;
+        }
+    }
+    &.theme-light{
+        background-color: $light-background;
+        color: $light-font;
+        .secondary{
+            background-color: $light-secondary-background;
+        }
+    }
+}
+
+main.main-page-content{
+    padding: 100px 15px;
+    position: relative;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
