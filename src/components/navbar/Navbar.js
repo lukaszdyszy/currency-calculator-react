@@ -27,12 +27,34 @@ const Navbar = (props) => {
         }
     }
 
+    const themeSwitch = () => {
+        if(props.currentTheme=='dark'){
+            props.setTheme('light');
+        } else {
+            props.setTheme('dark');
+        }
+    }
+
+    const switchRender = () => {
+        if(props.currentTheme=='dark'){
+            return(
+                <i className="far fa-sun"></i>
+            )
+        } else {
+            return(
+                <i className="far fa-moon"></i>
+            )
+        }
+    }
+
     return (
         <div className="navbar">
             <div className="left">
-                motyw: 
-                <div className={`theme-select dark ${ifDark()}`} onClick={() => props.setTheme('dark')}></div>
-                <div className={`theme-select light ${ifLight()}`} onClick={() => props.setTheme('light')}></div>
+                <div className="theme-switch" onClick={themeSwitch}>
+                    {
+                        switchRender()
+                    }
+                </div>
             </div>
             <div className="right">
                 <i className="fas fa-bars fa-2x" onClick={toggle}></i>

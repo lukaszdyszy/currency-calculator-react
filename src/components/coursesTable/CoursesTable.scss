@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+// @import '../../variables.scss';
 
 h2{
     margin: 0;
@@ -18,13 +18,14 @@ h2{
 }
 
 table{
+    background-color: var(--bg-secondary);
     width: 100%;
     border-collapse: collapse;
     td, th{
         padding: 5px;
     }
     th{
-        border-bottom: 3px solid $dark-border;
+        border-bottom: 3px solid var(--border-color);
     }
     td{
         font-size: 0.95rem;
@@ -36,6 +37,6 @@ table{
         transform: scaleX(1);
     }
     tr:nth-child(odd){
-        background-color: $dark-third-background;
+        background-color: var(--bg-odd);
     }
 }

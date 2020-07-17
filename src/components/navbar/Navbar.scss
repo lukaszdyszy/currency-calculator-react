@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+// @import '../../variables.scss';
 
 .navbar{
     width: 100%;
@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     z-index: 1000;
-    background-color: $dark-background;
+    background-color: var(--bg-nav);
     display: flex;
     padding: 15px;
     border-bottom: 2px solid black;
@@ -28,10 +28,10 @@
         border-color: goldenrod;
     }
     &.dark{
-        background-color: $dark-background;
+        background-color: black;
     }
     &.light{
-        background-color: $light-background;
+        background-color: white;
     }
 }
 .right{
@@ -56,7 +56,7 @@
     width: 70vw;
     height: 100vh;
     z-index: 1001;
-    background-color: $dark-nav;
+    background-color: var(--bg-nav);
     transform: translateX(100%);
     transition: transform 0.75s;
     &.shown{
@@ -75,5 +75,27 @@ ul.menu{
         line-height: 200%;
         padding: 0 10px;
         margin: 0;
+    }
+}
+
+
+// switch
+.theme-switch{
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    i{
+        font-size: 1.3rem;
+        opacity: 0.7;
+        &:hover{
+            opacity: 1;
+            cursor: pointer;
+        }
+        &.fa-sun{
+            color: yellow;
+        }
+        &.fa-moon{
+            color: grey;
+        }
     }
 }
