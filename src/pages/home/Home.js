@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import API from '../../API.js';
+import API from 'API.js';
 import Calculator from '../../components/calculator/Calculator.js';
 import CoursesTable from '../../components/coursesTable/CoursesTable.js';
 
