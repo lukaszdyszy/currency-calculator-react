@@ -50,7 +50,7 @@ const Calculator = (props) => {
     }, [inputValue, calc]);
     
     return (
-        <div className="calculator-container secondary">
+        <div className="calculator-container">
             { currencyList(0) }
             <div className="reverse">
                 <img src={reverse} onClick={() => {swap()}} style={{zIndex: 0}}/> 

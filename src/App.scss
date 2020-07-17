@@ -1,19 +1,15 @@
-@import './variables.scss';
+// @import 'variables.scss';
+@import 'globals/themes.scss';
 
 .App{
     min-height: 100vh;
-    &.theme-dark{
-        background-color: $dark-background;
-        color: $dark-font;
-        .secondary{
-            background-color: $dark-secondary-background;
-        }
-    }
-    &.theme-light{
-        background-color: $light-background;
-        color: $light-font;
-        .secondary{
-            background-color: $light-secondary-background;
+    @each $theme-name, $values in $themes{
+        &.theme-#{$theme-name}{
+            @each $prop, $value in $values{
+            --#{$prop}: #{$value};
+            }
+            background-color: var(--bg-primary);
+            color: var(--font-color);
         }
     }
 }

@@ -1,0 +1,10 @@
+.theme-dark{
+    --bg-primary: black;
+}
+.theme-light{
+    --bg-primary: white;
+}
+
+.aall{
+    background-color: var(--bg-primary);
+}

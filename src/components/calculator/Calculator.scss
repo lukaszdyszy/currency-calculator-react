@@ -1,5 +1,9 @@
-@import '../../variables.scss';
+// @import '../../variables.scss';
 
+.calculator-container{
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+}
 .currency{
     padding: 7px;
     select, input{
@@ -8,7 +12,7 @@
         color: inherit;
         width: 100%;
         border: none;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--border-color);
         padding: 5px;
         margin: 5px 0;
         &:focus{
@@ -21,7 +25,7 @@
     &:first-child{
         padding-bottom: 20px;
         input:focus{
-            box-shadow: inset 0px -7px 5px -5px rgba(0,0,0,0.75);
+            box-shadow: inset 0px -7px 5px -5px var(--border-color);
         }
     }
     &:last-child{
