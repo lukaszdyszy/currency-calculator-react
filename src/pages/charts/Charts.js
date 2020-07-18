@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './Charts.scss';
 import CurrencyList from 'components/coursesTable/currencyList.js';
+import MakeChart from 'components/makeChart/makeChart.js';
 import axios from 'axios';
 import API from 'API.js';
 import { withRouter } from 'react-router-dom';
@@ -25,6 +26,7 @@ const Charts = () => {
 
     return (
         <div className="charts-container">
+            <MakeChart currencies={(list.filter(currency => currency.checked==true)).map(curr => curr.code)}/>
             <CurrencyList list={list} updateList={updateList}/>
         </div>
     )
