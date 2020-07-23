@@ -7,6 +7,20 @@ import { Line } from 'react-chartjs-2';
 const MakeChart = (props) => {
     const [dates, updateDates] = useState(['2020-07-10', '2020-07-17']);
     const [dataSets, updateData] = useState({});
+    const [options, setOptions] = useState({
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontColor: "white"
+                }
+            }],
+            xAxes: [{
+                ticks: {
+                    fontColor: "white"
+                }
+            }]
+        }
+    });
 
     const randomColor = () => {
         let rgb = [0,0,0];
@@ -40,6 +54,24 @@ const MakeChart = (props) => {
         });
     }
 
+    useEffect(() => {
+        let newColor = window.getComputedStyle(document.querySelector('.App'), null).getPropertyValue('color');
+        setOptions({
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: newColor
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: newColor
+                    }
+                }]
+            }
+        })
+    }, [props.currentTheme]);
+
     return(
         <div className="make-chart-container">
             <form onSubmit={e => {e.preventDefault(); getData();}}>
@@ -49,8 +81,8 @@ const MakeChart = (props) => {
                 <input type="date" id="to" defaultValue={dates[1]} onChange={e => {updateDates([dates[0], e.target.value])}}/>
                 <input type="submit" value="Pokaż"/>
             </form>
-            <div className="chart-container">
-                <Line data={dataSets}/>
+            <div id="chart-container">
+                <Line options={options} data={dataSets} />
             </div>
         </div>
     )

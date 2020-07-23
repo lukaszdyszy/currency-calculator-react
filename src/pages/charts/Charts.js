@@ -6,7 +6,7 @@ import axios from 'axios';
 import API from 'API.js';
 import { withRouter } from 'react-router-dom';
 
-const Charts = () => {
+const Charts = (props) => {
     const [list, updateList] = useState([]);
 
     const getList = () => {
@@ -26,7 +26,7 @@ const Charts = () => {
 
     return (
         <div className="charts-container">
-            <MakeChart currencies={(list.filter(currency => currency.checked==true)).map(curr => curr.code)}/>
+            <MakeChart currentTheme={props.currentTheme} currencies={(list.filter(currency => currency.checked==true)).map(curr => curr.code)}/>
             <CurrencyList list={list} updateList={updateList}/>
         </div>
     )

@@ -14,7 +14,7 @@ const App = () => {
         <main className="main-page-content">
             <Switch>
               <Route path="/charts">
-                <Charts />
+                <Charts currentTheme={theme}/>
               </Route>
               <Route path="/">
                 <Home />
