@@ -5,7 +5,22 @@ import API from 'API.js';
 import { Line } from 'react-chartjs-2';
 
 const MakeChart = (props) => {
-    const [dates, updateDates] = useState(['2020-07-10', '2020-07-17']);
+    const parseDate = (dateTime) => {
+        let y = dateTime.getFullYear();
+        let m = dateTime.getMonth()+1;
+        let d = dateTime.getDate();
+
+        if(m < 10){m = '0'+m;}
+        if(d < 10){d = '0'+d;}
+
+        return `${y}-${m}-${d}`;
+    } 
+
+    let today = new Date();
+    let today2 = new Date();
+    today2.setDate(today.getDate() - 7);
+
+    const [dates, updateDates] = useState([parseDate(today2), parseDate(today)]);
     const [dataSets, updateData] = useState({});
     const [options, setOptions] = useState({
         scales: {
@@ -74,12 +89,22 @@ const MakeChart = (props) => {
 
     return(
         <div className="make-chart-container">
-            <form onSubmit={e => {e.preventDefault(); getData();}}>
-                <label htmlFor="from">Od: </label>
-                <input type="date" id="from" defaultValue={dates[0]} onChange={e => {updateDates([e.target.value, dates[1]])}}/>
-                <label htmlFor="to">Do: </label>
-                <input type="date" id="to" defaultValue={dates[1]} onChange={e => {updateDates([dates[0], e.target.value])}}/>
-                <input type="submit" value="Pokaż"/>
+            <form className="graph-form" onSubmit={e => {e.preventDefault(); getData();}}>
+                <div className="date-range">
+                    <div className="date-from">
+                        <label htmlFor="from">Od: </label>
+                        <br/>
+                        <input type="date" id="from" defaultValue={dates[0]} onChange={e => {updateDates([e.target.value, dates[1]])}}/>
+                    </div>
+                    <div className="date-to">
+                        <label htmlFor="to">Do: </label>
+                        <br/>
+                        <input type="date" id="to" defaultValue={dates[1]} onChange={e => {updateDates([dates[0], e.target.value])}}/>
+                    </div>
+                </div>
+                <div className="show-result">
+                    <input type="submit" value="Pokaż"/>
+                </div>
             </form>
             <div id="chart-container">
                 <Line options={options} data={dataSets} />

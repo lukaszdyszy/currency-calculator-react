@@ -1,8 +1,25 @@
-
-// #chart-container{
-//     max-height: 50vh;
-// }
-
 .chartjs-size-monitor{
     max-height: 50vh;
+}
+
+.graph-form{
+    background-color: var(--bg-secondary);
+    padding: 5px;
+    border: 1px solid var(--border-color);
+}
+.date-range{
+    display: flex;
+}
+.date-from, .date-to{
+    flex: 1;
+    padding: 5px;
+    input{
+        width: 100%;
+    }
+}
+.show-result{
+    padding: 5px;
+    input{
+        width: 100%;
+    }
 }
