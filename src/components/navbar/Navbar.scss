@@ -98,3 +98,25 @@ ul.menu{
         }
     }
 }
+
+
+@media (min-width: 720px){
+    i.fa-bars{
+        display: none;
+    }
+    .main-menu{
+        position: static;
+        width: 100%;
+        height: auto;
+        z-index: 1001;
+        transform: translateX(0);
+    }
+    ul.menu{
+        flex-direction: row;
+        justify-content: flex-end;
+        margin: 0;
+    }
+    i.fa-times{
+        display: none;
+    }
+}

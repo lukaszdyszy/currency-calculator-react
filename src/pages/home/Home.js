@@ -32,14 +32,18 @@ const Home = () => {
 
     if(!loading){
         return(
-            <div className="home-container">
-                <Calculator rates={rates}/>
-                <CoursesTable date={date} rates={rates}/>
+            <div className="wrapper">
+                <div className="home-container">
+                    <Calculator rates={rates}/>
+                    <CoursesTable date={date} rates={rates}/>
+                </div>
             </div>
         )
     } else {
         return(
-            <div>loading...</div>
+            <div className="wrapper">
+                <div>loading...</div>
+            </div>
         )
     }
 }

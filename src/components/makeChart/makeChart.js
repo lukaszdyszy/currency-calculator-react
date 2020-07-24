@@ -106,7 +106,7 @@ const MakeChart = (props) => {
                     <input type="submit" value="Pokaż"/>
                 </div>
             </form>
-            <div id="chart-container">
+            <div className="chart-container">
                 <Line options={options} data={dataSets} />
             </div>
         </div>

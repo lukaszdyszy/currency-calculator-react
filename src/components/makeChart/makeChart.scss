@@ -2,6 +2,12 @@
     max-height: 50vh;
 }
 
+@media (min-width: 720px){
+    input{
+        font-size: 1.1rem;
+    }
+}
+
 .graph-form{
     background-color: var(--bg-secondary);
     padding: 5px;
@@ -22,4 +28,8 @@
     input{
         width: 100%;
     }
+}
+
+.chart-container{
+    padding: 20px 0;
 }

@@ -1,0 +1,13 @@
+@media (min-width: 900px){
+    .charts-container{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .chart{
+        flex: 4;
+        padding: 15px;
+    }
+    .list{
+        flex: 1;
+    }
+}

@@ -42,3 +42,24 @@
         height: 64px;
     }
 }
+
+
+@media (min-width: 720px){
+    .calculator-container{
+        display: flex;
+    }
+    .currency{
+        flex: 2;
+    }
+    .currency:last-child{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .reverse{
+        flex: 1;
+        align-items: center;
+        img{
+            transform: rotate(0);
+        }
+    }
+}

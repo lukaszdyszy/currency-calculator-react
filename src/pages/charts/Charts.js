@@ -26,8 +26,12 @@ const Charts = (props) => {
 
     return (
         <div className="charts-container">
-            <MakeChart currentTheme={props.currentTheme} currencies={(list.filter(currency => currency.checked==true)).map(curr => curr.code)}/>
-            <CurrencyList list={list} updateList={updateList}/>
+            <div className="chart">
+                <MakeChart currentTheme={props.currentTheme} currencies={(list.filter(currency => currency.checked==true)).map(curr => curr.code)}/>
+            </div>
+            <div className="list">
+                <CurrencyList list={list} updateList={updateList}/>
+            </div>
         </div>
     )
 }
