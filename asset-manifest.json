@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/currency-calculator-react/static/css/main.fed2e18f.chunk.css",
-    "main.js": "/currency-calculator-react/static/js/main.45f2128b.chunk.js",
-    "main.js.map": "/currency-calculator-react/static/js/main.45f2128b.chunk.js.map",
+    "main.js": "/currency-calculator-react/static/js/main.0f3c8aef.chunk.js",
+    "main.js.map": "/currency-calculator-react/static/js/main.0f3c8aef.chunk.js.map",
     "runtime-main.js": "/currency-calculator-react/static/js/runtime-main.18680e62.js",
     "runtime-main.js.map": "/currency-calculator-react/static/js/runtime-main.18680e62.js.map",
     "static/js/2.68d4bffc.chunk.js": "/currency-calculator-react/static/js/2.68d4bffc.chunk.js",
     "static/js/2.68d4bffc.chunk.js.map": "/currency-calculator-react/static/js/2.68d4bffc.chunk.js.map",
     "index.html": "/currency-calculator-react/index.html",
-    "precache-manifest.16a72bdabc3aca190f56f8c07e405755.js": "/currency-calculator-react/precache-manifest.16a72bdabc3aca190f56f8c07e405755.js",
+    "precache-manifest.847510defceddf223ae998d60240fe66.js": "/currency-calculator-react/precache-manifest.847510defceddf223ae998d60240fe66.js",
     "service-worker.js": "/currency-calculator-react/service-worker.js",
     "static/css/main.fed2e18f.chunk.css.map": "/currency-calculator-react/static/css/main.fed2e18f.chunk.css.map",
     "static/js/2.68d4bffc.chunk.js.LICENSE.txt": "/currency-calculator-react/static/js/2.68d4bffc.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.18680e62.js",
     "static/js/2.68d4bffc.chunk.js",
     "static/css/main.fed2e18f.chunk.css",
-    "static/js/main.45f2128b.chunk.js"
+    "static/js/main.0f3c8aef.chunk.js"
   ]
 }
