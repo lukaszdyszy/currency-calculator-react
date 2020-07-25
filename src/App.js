@@ -9,7 +9,7 @@ const App = () => {
   const [theme, selectTheme] = useState('dark');
   return (
     <div className={`App theme-${theme}`}>
-      <Router>
+      <Router basename="/currency-calculator-react/">
         <Navbar currentTheme={theme} setTheme={selectTheme}/>
         <main className="main-page-content">
             <Switch>
