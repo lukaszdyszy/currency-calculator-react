@@ -1,2 +1,6 @@
-const API = 'https://api.nbp.pl/api/';
-export default API;
+const API = 'https://cors-anywhere.herokuapp.com/https://api.nbp.pl/api/';
+const defaultHeaders = {
+    origin: '*'
+}
+
+export {API, defaultHeaders};

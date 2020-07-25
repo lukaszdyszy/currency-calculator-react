@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './makeChart.scss';
 import axios from 'axios';
-import API from 'API.js';
+import { API, defaultHeaders } from 'API.js';
 import { Line } from 'react-chartjs-2';
 
 const MakeChart = (props) => {
@@ -52,7 +52,7 @@ const MakeChart = (props) => {
         props.currencies.map(currency => {
             axios.get(`${API}exchangerates/rates/A/${currency}/${dates[0]}/${dates[1]}/?format=json`, {
                 method: 'HEAD',
-                mode: 'no-cors'
+                headers: defaultHeaders
             }).then(response => {
                 let color = randomColor();
                 newData.datasets.push({

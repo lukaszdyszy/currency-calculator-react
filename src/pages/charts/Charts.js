@@ -3,7 +3,7 @@ import './Charts.scss';
 import CurrencyList from 'components/coursesTable/currencyList.js';
 import MakeChart from 'components/makeChart/makeChart.js';
 import axios from 'axios';
-import API from 'API.js';
+import { API, defaultHeaders } from 'API.js';
 import { withRouter } from 'react-router-dom';
 
 const Charts = (props) => {
@@ -12,7 +12,7 @@ const Charts = (props) => {
     const getList = () => {
         axios.get(`${API}exchangerates/tables/A/?format=json`, {
             method: 'HEAD',
-            mode: 'no-cors'
+            headers: defaultHeaders
         }).then(response => {
             updateList(response.data[0].rates.map(currency => {
                 return {code: currency['code'], name: currency['currency'], checked: false}
