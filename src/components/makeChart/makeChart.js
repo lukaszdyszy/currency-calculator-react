@@ -3,6 +3,7 @@ import './makeChart.scss';
 import axios from 'axios';
 import { API, defaultHeaders } from 'API.js';
 import { Line } from 'react-chartjs-2';
+import Loader from 'components/loader/loader.js';
 
 const MakeChart = (props) => {
     const parseDate = (dateTime) => {
@@ -19,6 +20,8 @@ const MakeChart = (props) => {
     let today = new Date();
     let today2 = new Date();
     today2.setDate(today.getDate() - 7);
+
+    const [loading, isLoading] = useState(false);
 
     const [dates, updateDates] = useState([parseDate(today2), parseDate(today)]);
     const [dataSets, updateData] = useState({});
@@ -45,27 +48,62 @@ const MakeChart = (props) => {
         return rgb;
     }
 
+    function getSingleData(currency){
+        return axios.get(`${API}exchangerates/rates/A/${currency}/${dates[0]}/${dates[1]}/?format=json`, {
+            method: 'HEAD',
+            mode: 'no-cors',
+            headers: defaultHeaders
+        }).then(response => {
+            // let color = randomColor();
+            // newData.datasets.push({
+            //     label: currency, 
+            //     data: response.data.rates.map(rate => rate.mid),
+            //     borderColor: [`rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`]
+            // });
+            // i++;
+
+            // return{
+            //     label: currency, 
+            //     data: response.data.rates.map(rate => rate.mid),
+            //     borderColor: [`rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`],
+            //     labels: response.data.rates.map(rate => rate.effectiveDate)
+            // }
+            // console.log(response);
+            return response.data;
+            
+            // isLoading(false);
+        }).catch(err => {
+            // getData(currency);
+            return err;
+        });
+    }
+
     function getData(){
+        isLoading(true);
         updateData({});
         let newData = {labels: [], datasets: []};
         let i = 0;
-        props.currencies.map(currency => {
-            axios.get(`${API}exchangerates/rates/A/${currency}/${dates[0]}/${dates[1]}/?format=json`, {
-                method: 'HEAD',
-                headers: defaultHeaders
-            }).then(response => {
-                let color = randomColor();
-                newData.datasets.push({
-                    label: currency, 
-                    data: response.data.rates.map(rate => rate.mid),
-                    borderColor: [`rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`]
+        props.currencies.map(async currency => {
+            let color = randomColor();
+            let error = true;
+            while(error){
+                await getSingleData(currency).then(singleData => {
+                    if(singleData.rates !== undefined){
+                        newData.datasets.push({
+                            label: currency, 
+                            data: singleData.rates.map(rate => rate.mid),
+                            borderColor: [`rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`]
+                        });
+                        i++;
+                        if(i == props.currencies.length){
+                            newData.labels = singleData.rates.map(rate => rate.effectiveDate);
+                            updateData(newData);
+                            isLoading(false);
+                        }
+                        error = false;
+                    }
                 });
-                i++;
-                if(i == props.currencies.length){
-                    newData.labels = response.data.rates.map(rate => rate.effectiveDate);
-                    updateData(newData);
-                }
-            }).catch(err => {alert(err)});
+            }
         });
     }
 
@@ -87,6 +125,16 @@ const MakeChart = (props) => {
         })
     }, [props.currentTheme]);
 
+    const renderLoader = () => {
+        if(loading){
+            return(
+                <div style={{textAlign: "center"}}>
+                    <Loader />
+                </div>
+            )
+        }
+    }
+
     return(
         <div className="make-chart-container">
             <form className="graph-form" onSubmit={e => {e.preventDefault(); getData();}}>
@@ -106,6 +154,7 @@ const MakeChart = (props) => {
                     <input type="submit" value="Pokaż"/>
                 </div>
             </form>
+            {renderLoader()}
             <div className="chart-container">
                 <Line options={options} data={dataSets} />
             </div>

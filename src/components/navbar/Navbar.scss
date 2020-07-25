@@ -7,7 +7,7 @@
     z-index: 1000;
     background-color: var(--bg-nav);
     display: flex;
-    padding: 15px;
+    padding: 5px 15px;
     border-bottom: 2px solid black;
 }
 .left{
@@ -100,7 +100,7 @@ ul.menu{
 }
 
 
-@media (min-width: 720px){
+@media (min-width: 500px){
     i.fa-bars{
         display: none;
     }
@@ -118,5 +118,10 @@ ul.menu{
     }
     i.fa-times{
         display: none;
+    }
+    @media (min-height: 500px){
+        .navbar{
+            padding: 15px;
+        }
     }
 }

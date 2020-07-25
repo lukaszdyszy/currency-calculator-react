@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { API, defaultHeaders } from 'API.js';
-import Calculator from '../../components/calculator/Calculator.js';
-import CoursesTable from '../../components/coursesTable/CoursesTable.js';
+import Calculator from 'components/calculator/Calculator.js';
+import CoursesTable from 'components/coursesTable/CoursesTable.js';
+import Loader from 'components/loader/loader.js';
 
 const Home = () => {
     const [rates, updateRates] = useState([]);
@@ -12,13 +13,16 @@ const Home = () => {
     const getAllRates = () => {
         axios.get(`${API}exchangerates/tables/A/?format=json`, {
             method: 'HEAD',
+            mode: 'no-cors',
             headers: defaultHeaders
         }).then(response => {
             updateDate(response.data[0].effectiveDate);
             let list = response.data[0].rates;
             list.unshift({currency: 'polski złoty', code: 'PLN', mid: 1.0000});
             updateRates(response.data[0].rates);
-        }).catch(err => {alert(err)});
+        }).catch(err => {
+            getAllRates();
+        });
     }
 
     useEffect(() => {
@@ -41,8 +45,8 @@ const Home = () => {
         )
     } else {
         return(
-            <div className="wrapper">
-                <div>loading...</div>
+            <div className="wrapper" style={{textAlign: "center"}}>
+                <Loader />
             </div>
         )
     }
